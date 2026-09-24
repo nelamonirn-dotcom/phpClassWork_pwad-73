@@ -10,4 +10,7 @@ if(!$conn){
     die("Database connection failed:" . mysqli_connect_error());
 }
 
+if(!$conn){
+    die("database connection failed:".mysqli_co)
+}
 ?>
