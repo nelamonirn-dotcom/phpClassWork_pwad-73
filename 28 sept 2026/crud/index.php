@@ -15,7 +15,7 @@
         </style>
 </head>
 <h1>Student list</h1>
-
+<a href="Addstudent.php">New Entry</a> <br> <br>
 <?php
  $rawData = $conn->query("SELECT * FROM allstudents");?>
   <table border="1" cellspacing="0" cellpadding="10" >
@@ -26,6 +26,7 @@
 <th>Name</th>
 <th>email</th>
 <th>phone</th>
+<th>Action</th>
 </tr>
 
     <?php
@@ -36,6 +37,12 @@
     <td><?php echo $row['name'] ?></td>
     <td><?php echo $row['email'] ?></td>
     <td><?php echo $row['phone'] ?></td>  
+    <td>Edit | 
+        
+    <a onclick=" return confirm('Are you sure to delete')" href="Student_Delete.php?id=<?php echo $row['id'] ?>">Delete</a>
+    <link rel="stylesheet" href="style.css">
+
+</td>  
 </tr>
 
 <?php
