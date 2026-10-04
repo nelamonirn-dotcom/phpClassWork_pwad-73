@@ -48,11 +48,11 @@ $row= $data->fetch_object();
 
 ?>
 
-   <form action="" method="post">
+    <form action="" method="post">
         <input type="text" name="name" placeholder="Enter product name"><br>
         <input type="text" name="description" placeholder="Enter your product description"><br>
-        <input type="number" name="quantity" placeholder="Enter your  product quantity"><br>
-        <input type="text" name="prize" placeholder="Enter your product prize"><br>
+        <input type="text" name="quantity" placeholder="Enter your  product quantity"><br>
+        <input type="number" name="prize" placeholder="Enter your product prize"><br>
         <input type="submit" name="submit"  value="Save">
     </form>
     <br>
