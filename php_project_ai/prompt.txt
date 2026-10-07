@@ -1,0 +1,6 @@
+Here is my project inside php_project_ai. My project database is ai database db.
+I have a file dbconfig.php for database connection. Please write database connection script
+
+create a user table.
+there is a login form in index.php. Create user  authrntication with 
+that login from after logging in user will be redirected to dashboard.php
