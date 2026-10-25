@@ -1,0 +1,88 @@
+SELECT * FROM employees
+
+SELECT `employeeNumber`, `lastName`, `email`, `jobTitle` FROM employees
+
+SELECT * FROM employees WHERE employeeNumber = '1611'
+
+SELECT employeeNumber, lastName, email, jobTitle FROM employees WHERE employeeNumber = '1611'
+
+SELECT employeeNumber, lastName, email, jobTitle FROM employees WHERE jobTitle = 'Sales Rep'
+
+SELECT employeeNumber, lastName, email, jobTitle FROM employees WHERE jobTitle = 'Sales Rep' AND officeCode = '3'
+
+SELECT employeeNumber, lastName, email, jobTitle, officeCode FROM employees WHERE jobTitle = 'Sales Rep' AND 
+officeCode < '4'
+
+SELECT employeeNumber, lastName, email, jobTitle, officeCode FROM employees WHERE jobTitle = 'Sales Rep' 
+AND officeCode in (1,4)
+
+SELECT employeeNumber, lastName, firstName, jobTitle, city, country, phone FROM employees, offices WHERE 
+offices.officeCode = employees.officeCode
+
+#two table joining:
+SELECT employeeNumber, lastName, firstName, jobTitle, city, country, phone FROM employees, offices WHERE 
+offices.officeCode = employees.officeCode AND offices.officeCode = 5
+
+INSERT INTO offices 
+(officeCode, city, phone, addressLine1, addressLine2, state, country, postalCode, territory) 
+VALUES 
+('8', 'Dhaka', '800142566333', 'Mirpur Road', 'Metroshopping Mall', '', 'Bangladesh', '1207', 'NA');
+
+
+
+INSERT INTO offices 
+(officeCode, city, phone, addressLine1, addressLine2, state, country, postalCode, territory) 
+VALUES 
+('8', 'Dhaka', '019564122', 'Mirpur Road', 'Metroshopping Mall', '', 'Bangladesh', '1207', 'NA');
+
+INSERT INTO employees 
+(employeeNumber, lastName, firstName, extension, email, officeCode, reportsTo, jobTitle) 
+VALUES 
+('1703', 'Rabeya', 'Mst', 'x357', 'rabeya@gmail.com', '8', '1056', 'Web Developer');
+
+INSERT INTO employees VALUES 
+('1705', 'Modina', 'Kazi', 'x359', 'modina@gmail.com', '8', '1056', 'Web Developer');
+
+SELECT * FROM products WHERE `buyPrice` BETWEEN '50.00' AND '100';
+
+#distinct value:
+SELECT DISTINCT productLine FROM products;
+
+#Sorting:
+SELECT * FROM `employees` ORDER BY lastName [ASC]/[DESC];
+
+#Concat:
+SELECT CONCAT(firstName, " ", lastName) AS fullName FROM `employees`;
+
+#Limited data show:
+SELECT * FROM `employees` LIMIT 5;
+SELECT * FROM `employees` LIMIT 5 OFFSET 10; //offset used to show specific data 5 to 14, total 10
+
+#3 table join and show required data:
+SELECT customers.customerNumber, customerName, country, quantityOrdered, status FROM customers, orders, orderdetails WHERE 
+orders.customerNumber = customers.customerNumber AND orders.orderNumber = orderdetails.orderNumber;
+
+
+<--OR--->
+SELECT * FROM `customers`WHERE `country` ='France'OR `country`='Australia';
+
+<--NOT IN--->
+SELECT * FROM `customers`WHERE `country` NOT IN ('France','Australia');
+
+
+<--MIN--->
+SELECT MIN(amount) FROM `payments`;
+
+
+<--MAX--->
+SELECT MAX(amount) AS 'MAX Amount' FROM `payments`;
+
+<--SUM--->
+SELECT SUM(amount) AS 'SUM Amount' FROM `payments` WHERE customerNumber ='103';
+
+<--AVG--->
+SELECT AVG(amount) AS 'AVG Amount' FROM `payments`;
+
+
+<--COUNT--->
+SELECT COUNT(amount) AS 'Count Amount' FROM `payments`;
