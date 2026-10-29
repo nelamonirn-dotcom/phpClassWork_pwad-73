@@ -2,3 +2,7 @@ Typically, you’ll need to create what’s known as a handle before you can do 
 with a file’s contents. Likewise, once you’ve finished working with that resource, you
 should destroy the handle. Two standard functions are available for such tasks, both of
 which are introduced in this section.
+
+create authentication with multiple user type like  admin ,customar,staff create dashboard and sideber foe every user type
+
+first clean the Sidebar and dashboard

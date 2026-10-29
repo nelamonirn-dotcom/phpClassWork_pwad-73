@@ -86,3 +86,57 @@ SELECT AVG(amount) AS 'AVG Amount' FROM `payments`;
 
 <--COUNT--->
 SELECT COUNT(amount) AS 'Count Amount' FROM `payments`;
+
+[26-10-2-26]
+
+<--UPDATE--->
+UPDATE `employees` SET `firstName`='nesir',`lastName`='uddin' WHERE employeeNumber ='1102';
+UPDATE `employees` SET `officeCode`= 2 WHERE `officeCode` = 8;
+
+<--DELETE--->
+DELETE * FROM `customers` WHERE `customerNumber`= 103;
+
+
+<--NULL--->
+SELECT `customerName`,addressLine1,addressLine2 FROM `customers` WHERE addressLine2 IS NULL;
+
+<--LIKE--->
+SELECT contactLastName FROM customers WHERE contactLastName LIKE 'Fe%';
+
+<--INNER JOIN-->
+SELECT customers.`customerNumber`,`customerName`,`country`, `amount` FROM `customers`INNER JOIN payments WHERE payments.customerNumber = customers.customerNumber;
+
+SELECT customers.`customerNumber`,`customerName`,`country`, `amount` FROM `customers` , `payments` WHERE payments.customerNumber = customers.customerNumber;
+
+
+<--LEFT JOIN-->
+SELECT customers.`customerNumber`,`customerName`,`country`, `amount` FROM `customers`LEFT JOIN payments ON payments.customerNumber = customers.customerNumber;
+
+<--LEFT JOIN-->
+SELECT customers.`customerNumber`,`customerName`,`country`, `amount` FROM `customers`LEFT JOIN payments ON payments.customerNumber = customers.customerNumber;
+
+
+<--RIGHT JOIN-->
+SELECT customers.`customerNumber`,`customerName`,`country`, `amount` FROM `customers`RIGHT JOIN payments ON payments.customerNumber = customers.customerNumber;
+
+
+<--GROUP BY-->
+SELECT `city`, `country`, COUNT(customerNumber) FROM `customers` GROUP BY `city`,`country`;
+SELECT customers.`customerNumber`,`customerName`,`country`, SUM(`amount`) AS 'Total payment' FROM `customers`, `payments` WHERE customers.customerNumber = payments.customerNumber GROUP BY customers.customerNumber;
+
+
+<--create user-->
+create user 'nela'@'localhost' identified by 'abcde';
+
+
+28-10-2026
+<----------------- VIEWS----------------->
+
+
+CREATE VIEW customers_payments_view AS
+SELECT customers.customerNumber , customerName , contactLastName  , contactFirstName , phone , addressLine1 , addressLine2 , city , state , postalCode , country , paymentDate , amount FROM customers, payments WHERE customers.customerNumber = payments.customerNumber ;
+
+<-----------------teriggers---------------->
+INSERT INTO product_logs VALUES (NULL, NEW.productcode,NEW.productname,'INSERT',NOW())
+INSERT INTO product_logs VALUES (NULL, OLD.productcode,OLD.productname,'DELETE',NOW())
+INSERT INTO product_logs VALUES (NULL, OLD.productcode,OLD.productname,'UPDATE',NOW())

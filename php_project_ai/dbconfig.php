@@ -1,16 +1,23 @@
 <?php
 
-// Database connection configuration
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "ai";
+mysqli_report(MYSQLI_REPORT_OFF);
 
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+$db = 'php_project_ai_db';
 
-try {
-    $conn = new mysqli($host, $user, $pass, $db);
-    $conn->set_charset("utf8mb4");
-} catch (mysqli_sql_exception $exception) {
-    die("Database connection failed: " . $exception->getMessage());
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+if (!$conn) {
+    error_log('Database connection failed: ' . mysqli_connect_error());
+    http_response_code(500);
+    exit('Database connection failed.');
+}
+
+if (!mysqli_set_charset($conn, 'utf8mb4')) {
+    error_log('Failed to set database connection charset: ' . mysqli_error($conn));
+    mysqli_close($conn);
+    http_response_code(500);
+    exit('Database connection failed.');
 }
